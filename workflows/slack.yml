@@ -1,7 +1,5 @@
 on:
   slack:
-  rss:
-    url: https://hnrss.org/newest?points=300&count=3
 jobs:
   print:
     name: Print
@@ -12,16 +10,3 @@ jobs:
           slack_text: ${{ on.slack.outputs.text }}
         run: |
           echo slack text: $slack_text
-  print2:
-    name: Print2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Outputs
-        env:
-          title: ${{on.rss.outputs.title}}
-          contentSnippet: ${{on.rss.outputs.contentSnippet}}
-          link: ${{on.rss.outputs.link}}
-        run: |
-          echo title: $title
-          echo contentSnippet: $contentSnippet
-          echo link: $link
