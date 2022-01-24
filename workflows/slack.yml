@@ -5,6 +5,12 @@ jobs:
     name: Print
     runs-on: ubuntu-latest
     steps:
+      - name: GitHub Action for Slack
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        uses: Ilshidur/action-slack@2.1.0
+        with:
+          args: 'A new miro event has been pushed.' # Optional
       - name: Print Outputs
         env:
           slack_text: ${{ on.slack.outputs.text }}
